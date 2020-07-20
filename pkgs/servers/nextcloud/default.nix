@@ -33,7 +33,12 @@ in {
   };
 
   nextcloud18 = generic {
-    version = "18.0.4";
-    sha256 = "0aa3f4xbkzacfw0h9aic0ywk5mqlwka83qaszizj8lmk68kf3n7s";
+    version = "18.0.7";
+    sha256 = "0pka87ccrds17n6n5w5a80mc1s5yrf8d4mf6wsfaypwjbm3wfb2b";
+  };
+
+  nextcloud19 = generic {
+    version = "19.0.0";
+    sha256 = "1bhazqj5f02sclh5pmifzqfahhhfqypixbvkgrnlgqy5ayb44gfj";
   };
 }
