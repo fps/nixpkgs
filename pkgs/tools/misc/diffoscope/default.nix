@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchurl, fetchpatch, runCommand, makeWrapper, python3Packages, docutils, help2man
+{ lib, stdenv, fetchurl, runCommand, makeWrapper, python3Packages, docutils, help2man
 , abootimg, acl, apktool, binutils-unwrapped, build-tools, bzip2, cbfstool, cdrkit, colord, colordiff, coreutils, cpio, db, diffutils, dtc
-, e2fsprogs, file, findutils, fontforge-fonttools, ffmpeg_4, fpc, gettext, ghc, ghostscriptX, giflib, gnumeric, gnupg, gnutar
+, e2fsprogs, file, findutils, fontforge-fonttools, ffmpeg, fpc, gettext, ghc, ghostscriptX, giflib, gnumeric, gnupg, gnutar
 , gzip, hdf5, imagemagick, jdk, libarchive, libcaca, llvm, lz4, mono, openssh, openssl, pdftk, pgpdump, poppler_utils, qemu, R
 , sng, sqlite, squashfsTools, tcpdump, odt2txt, unzip, wabt, xxd, xz, zip, zstd
 , enableBloat ? false
@@ -16,11 +16,11 @@ let
 in
 python3Packages.buildPythonApplication rec {
   pname = "diffoscope";
-  version = "147";
+  version = "151";
 
   src = fetchurl {
     url    = "https://diffoscope.org/archive/diffoscope-${version}.tar.bz2";
-    sha256 = "1pichn3l10401cqk08zrys2ya9b6cjznk7ra28awnmvlg6l1cypj";
+    sha256 = "180sfk0jfajkn3w3d4bw8ai25wh1bj7ca05lpsxxj7k472w6fsg9";
   };
 
   outputs = [ "out" "man" ];
@@ -28,12 +28,6 @@ python3Packages.buildPythonApplication rec {
   patches = [
     ./ignore_links.patch
     ./skip-failing-test.patch
-
-    # Fix for CBFS comparator
-    (fetchpatch {
-      url = "https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/39ec527371c469d61e4afc04b3ee6ae3563f7b4c.patch";
-      sha256 = "1mzdcbxg3ad5ynpf79phvif5hzckmhf7vzd82l1sffhlqxh0v4h3";
-    })
   ];
 
   postPatch = ''
@@ -62,7 +56,7 @@ python3Packages.buildPythonApplication rec {
     ])
     ++ lib.optionals stdenv.isLinux [ python3Packages.pyxattr acl cdrkit ]
     ++ lib.optionals enableBloat ([
-      abootimg apksigner apktool cbfstool colord ffmpeg_4 fpc ghc ghostscriptX giflib gnupg gnumeric
+      abootimg apksigner apktool cbfstool colord ffmpeg fpc ghc ghostscriptX giflib gnupg gnumeric
       hdf5 imagemagick llvm jdk mono odt2txt openssh pdftk poppler_utils qemu R tcpdump wabt
     ] ++ (with python3Packages; [ binwalk guestfs h5py ]));
 
