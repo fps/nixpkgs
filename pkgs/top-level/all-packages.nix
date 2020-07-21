@@ -13322,6 +13322,8 @@ in
     inherit (darwin.apple_sdk.frameworks) ApplicationServices Carbon CoreServices;
   };
 
+  libaudec = callPackage ../development/libraries/libaudec { };
+
   libsieve = callPackage ../development/libraries/libsieve { };
 
   libsixel = callPackage ../development/libraries/libsixel { };
@@ -13846,6 +13848,8 @@ in
   libixp_hg = callPackage ../development/libraries/libixp-hg { };
 
   libyaml = callPackage ../development/libraries/libyaml { };
+
+  libcyaml = callPackage ../development/libraries/libcyaml { };
 
   libyamlcpp = callPackage ../development/libraries/libyaml-cpp { };
 
@@ -26864,6 +26868,8 @@ in
   );
 
   zoneminder = callPackage ../servers/zoneminder { };
+
+  zrythm = callPackage ../applications/audio/zrythm { };
 
   zsnes = pkgsi686Linux.callPackage ../misc/emulators/zsnes { };
 
