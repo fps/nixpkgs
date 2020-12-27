@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
     owner = "falkTX";
     repo = pname;
     rev = "v${version}";
-    sha256 = "0c3y4a6cgi4bv1mg57i3qn5ia6pqjqlaylvkapj6bmpsw71ig22g";
+    sha256 = "0p289d1aj5ymmd7724fdcjq34drrn7xg33qnyvrq4ns4wd36i307";
   };
 
   nativeBuildInputs = [
